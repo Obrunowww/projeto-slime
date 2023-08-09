@@ -22,4 +22,4 @@ const intervaloDeAtualização = setInterval(() => {
 
 mostrarProduçãoS.innerHTML = produçãoTotal.toFixed(1); // Exibir a produção por segundo estática inicial
 
-// ... o restante do seu código
+
