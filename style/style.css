@@ -1,0 +1,166 @@
+*{
+    box-sizing: border-box;
+    padding: 0;
+    margin: 0;
+}
+body{
+    background: url(../imagens/wallpaperflare.com_wallpaper.jpg);
+    background-size: 100% 100%;
+}
+header{
+    height: 10vh;
+    border:solid;
+}
+main{
+    display: flex;
+    height: 90vh;
+    width: 100%;
+    justify-content: space-between;
+    align-items: center;
+    
+}
+.slime img{
+  
+    height: 100px;
+    width: 100px;
+
+}
+.tabuleiro{
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    align-items: center;
+    height: 50vh;
+    width: 25vw;
+    border: solid 1px;
+}
+.slime{
+    border:none;
+    background: transparent;
+}
+
+.upgrades{
+    
+    height: 90vh;
+    display: flex;
+    flex-direction: column;
+    align-self: flex-end;
+    width: 30vw;
+    
+}
+.tabuleiro{
+    background-color: wheat;
+}
+.up{
+    background-color: wheat;
+    display: flex;
+    justify-content: space-between;
+    flex-direction: column;
+    cursor: pointer;
+}
+.up:hover{
+    background-color: rgb(156, 141, 114);
+}
+.menuSlimes{
+    display: flex;
+    justify-content: space-between;
+    align-items: end;
+    height: 20vh;
+    border-bottom: solid 1px ;
+}
+.menuSlimes button{
+    width: 50px ;
+    height: 50px;
+}
+.menuSlimes section{
+    display: flex;
+    align-items: flex-end;
+    
+    width: 65%;
+    justify-content: space-between;
+}
+.trocaDeSlime{
+    border-radius: 10px 10px 0px 0px;
+    transition: ease-in 0.5s;
+    border: solid 1px blue;
+    width: 50px;
+    background-color: rgba(255, 0, 0, 0.315);
+    height: 20px;
+}
+.trocaDeSlime:hover{
+    position: relative;
+    height: 50px;
+}
+.conteinerDeUpgrade{
+    box-sizing: content-box;
+   
+    max-height: 75vh;
+    overflow: hidden;
+    overflow-y: scroll;
+}
+.conteinerDeUpgrade::-webkit-scrollbar{
+    width: 10px;
+    
+    
+}
+.conteinerDeUpgrade::-webkit-scrollbar-thumb{
+    background-color: transparent;
+    border-radius: 10px;
+
+}
+
+.menuSlimes{
+    height: 30vh;
+}
+.upgrades .up{ 
+    height: 20vh ;
+    width: 100%;
+    border:solid 1px
+}
+
+.informaçõesDoUpgrade{
+    height: 80%;
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+}
+.informaçõesDoUpgrade figure{
+    width: 35%;
+    height: 80%;
+    background-color: red;
+}
+.informaçõesDoUpgrade p{
+    width: 50%;
+}
+.compraDoUpgrade{
+    display: flex;
+    justify-content: space-around;
+}
+.multiplicadorDeCompra{
+    width: 40%;
+}
+.compraDoUpgrade p{
+    width: 45%;
+    display: flex;
+    justify-content: space-around;
+
+}
+.compraDoUpgrade p span{
+    width: 80%;
+    text-align: end;
+}
+.menu{
+   
+    display: none;
+    position: absolute;
+    width: 50vw ;
+    height: 90vh ;
+    background-color: rgb(2, 35, 128);
+    right: 0px;
+    top: 10vh;
+
+}
+.quantidadeDeUpgrades{
+    text-align: center !important;
+}
