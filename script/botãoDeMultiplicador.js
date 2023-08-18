@@ -33,11 +33,8 @@ const mostarValor = (upgrade,valor)=>{
 function atualizarValoresDosUpgrades() {
     upgrades.forEach((upgrade, index) => {
         const valores = calcularValorAumentadoDpsCompra(upgrade, multiplicadorDeCompra);
-        upgrade.preçoDeCompra = valores.valorFinal; // Atualizar o preço de compra do upgrade
         valorDoUpgrade[index].innerHTML = valores.somaAumentos;
     });
-
- 
 }
 
 const pressionarBotão = (evento)=>{
