@@ -23,3 +23,40 @@ const intervaloDeAtualização = setInterval(() => {
 mostrarProduçãoS.innerHTML = produçãoTotal.toFixed(1); // Exibir a produção por segundo estática inicial
 
 
+const progressoAtual = {
+    get dinheiro() {
+        return dinheiro;
+    },
+    get upgrades() {
+        return upgrades;
+    }
+};
+
+
+function salvarProgressoAutomaticamente(progresso) {
+    localStorage.setItem('progressoJogo', JSON.stringify(progresso));
+    console.log('Progresso salvo:', progresso);
+}
+
+const INTERVALO_SALVAMENTO = 60000; // Tempo em milissegundos (60 segundos)
+
+setInterval(() => {
+    
+    salvarProgressoAutomaticamente(progressoAtual);
+    
+}, INTERVALO_SALVAMENTO);
+
+function carregarProgressoSalvo() {
+    const progressoSalvo = localStorage.getItem('progressoJogo');
+    if (progressoSalvo) {
+        try {
+            return JSON.parse(progressoSalvo);
+        } catch (error) {
+            console.error('Erro ao fazer o parse do progresso salvo:', error);
+            return null;
+        }
+    }
+    return null;
+}
+
+

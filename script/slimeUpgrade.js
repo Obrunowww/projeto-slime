@@ -15,6 +15,8 @@ let upgrades = [
         bonusPorClick: 0.1,
         quantidade: 0,
         produçãoPorSegundo: 0,
+        imagemDoUpgrade:"",
+        
 
     },
     {
@@ -24,6 +26,9 @@ let upgrades = [
         produçãoPorSegundo: 1,
         bonusPorClick: 0,
         quantidade: 0,
+        imagemDoUpgrade:"",
+      
+
     },
     {
         nomeUpgrade: 'upgrade 3',
@@ -32,6 +37,9 @@ let upgrades = [
         produçãoPorSegundo: 5,
         bonusPorClick: 0,
         quantidade: 0,
+        imagemDoUpgrade:"",
+        
+        
 
     },
     {
@@ -41,6 +49,9 @@ let upgrades = [
         produçãoPorSegundo: 10,
         bonusPorClick: 0,
         quantidade: 0,
+        imagemDoUpgrade:"",
+       
+        
     },
     {
         nomeUpgrade: "upgrade 5",
@@ -49,6 +60,9 @@ let upgrades = [
         produçãoPorSegundo: 50,
         bonusPorClick: 0,
         quantidade: 0,
+        imagemDoUpgrade:"",
+       
+        
     }
 
 ];
@@ -87,10 +101,12 @@ const verificarCompra = (upgradeSelecionado) => {
 
 
         if (multiplicadorDeCompra ==1 && valorASerPago <= dinheiro ) {
+            
             dinheiro = dinheiro - valorASerPago;
             multiplicadorDoClick = multiplicadorDoClick + upgradeSelecionado.bonusPorClick;
             mostrarDinheiro.innerHTML = dinheiro;
             upgradeSelecionado.quantidade = upgradeSelecionado.quantidade + 1;
+            verificarAtualizaçãoDeRank(upgradeSelecionado);
             upgradeSelecionado.preçoDeCompra = upgradeSelecionado.preçoDeCompra * 1.05
             upgradeSelecionado.preçoDeCompra = formatarNumero(upgradeSelecionado.preçoDeCompra, 2);
 
@@ -109,6 +125,7 @@ const verificarCompra = (upgradeSelecionado) => {
             multiplicadorDoClick = multiplicadorDoClick + (upgradeSelecionado.bonusPorClick * 10);
             mostrarDinheiro.innerHTML = dinheiro;
             upgradeSelecionado.quantidade = upgradeSelecionado.quantidade + 10;
+            verificarAtualizaçãoDeRank(upgradeSelecionado);
             upgradeSelecionado.preçoDeCompra = novoValorUpgrade
             upgradeSelecionado.preçoDeCompra = formatarNumero(upgradeSelecionado.preçoDeCompra, 2);
 
@@ -127,6 +144,7 @@ const verificarCompra = (upgradeSelecionado) => {
             multiplicadorDoClick = multiplicadorDoClick + (upgradeSelecionado.bonusPorClick * 100);
             mostrarDinheiro.innerHTML = dinheiro;
             upgradeSelecionado.quantidade = upgradeSelecionado.quantidade + 100;
+            verificarAtualizaçãoDeRank(upgradeSelecionado);
             upgradeSelecionado.preçoDeCompra = novoValorUpgrade
             upgradeSelecionado.preçoDeCompra = formatarNumero(upgradeSelecionado.preçoDeCompra, 2);
 
@@ -157,7 +175,9 @@ const comprarUpgrade = (numeroDoUpgrade) => {
         
         console.log(`Agora o valor Do Upgrade Vai ser ${novoValorUpgrade}`);
         console.log(`O valor a ser pago é de ${valorASerPago}`)
+        salvarProgressoAutomaticamente(progressoAtual);
         verificarCompra(upgradeSelecionado);
+
         
         
     }
@@ -169,5 +189,16 @@ listaDeUpgrade.forEach((upgrade, numeroDoUpgrade) => {
     upgrade.addEventListener("click", () => comprarUpgrade(numeroDoUpgrade))
 });
 
-desenharUpgrade();
 
+window.onload = function() {
+    const progressoCarregado = carregarProgressoSalvo();
+    console.log('Progresso carregado:', progressoCarregado);
+
+    if (progressoCarregado) {
+        dinheiro = progressoCarregado.dinheiro;
+        upgrades = progressoCarregado.upgrades;
+        desenharUpgrade();
+    } else {
+        iniciarJogo();
+    }
+};
