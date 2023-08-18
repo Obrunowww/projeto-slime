@@ -29,6 +29,9 @@ const progressoAtual = {
     },
     get upgrades() {
         return upgrades;
+    },
+    get multiplicadorDoClick(){
+        return multiplicadorDoClick;
     }
 };
 
